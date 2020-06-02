@@ -1,0 +1,37 @@
+{
+  "name": "wifi-qr-code-generator",
+  "version": "1.0.0",
+  "description": "NPM module to generate a QR Code for WIFI ssid and password",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fantasywidgets/wifi-qr-code-generator.git"
+  },
+  "keywords": [
+    "qr",
+    "qr-code",
+    "wifi"
+  ],
+  "author": "Anoop Kunjuraman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fantasywidgets/wifi-qr-code-generator/issues"
+  },
+  "homepage": "https://github.com/fantasywidgets/wifi-qr-code-generator#readme",
+  "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "qrcode": "^1.4.4"
+  },
+  "files": [
+    "lib/**/*"
+  ]
+}
