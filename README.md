@@ -1,6 +1,9 @@
 <h1 align="center">Welcome to wifi-qr-code-generator 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/npm/v/wifi-qr-code-generator" />
+  <a href="https://github.com/fantasywidgets/wifi-qr-code-generator/actions?query=workflow%3A%22Node.js+CI%22" target="_blank">
+    <img alt="Build Status" src="https://img.shields.io/github/workflow/status/fantasywidgets/wifi-qr-code-generator/Node.js%20CI" />
+  </a>
   <a href="https://github.com/fantasywidgets/wifi-qr-code-generator#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
