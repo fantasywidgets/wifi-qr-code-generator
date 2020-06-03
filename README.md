@@ -8,7 +8,7 @@
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
   <a href="https://github.com/fantasywidgets/wifi-qr-code-generator/blob/master/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/license/anoopengineer/wifi-qr-code-generator" />
+    <img alt="License: MIT" src="https://img.shields.io/github/license/fantasywidgets/wifi-qr-code-generator" />
   </a>
   <a href="https://twitter.com/anoopengineer" target="_blank">
     <img alt="Twitter: anoopengineer" src="https://img.shields.io/twitter/follow/anoopengineer.svg?style=social" />
@@ -54,3 +54,7 @@ Give a ⭐️ if this project helped you!
 
 Copyright © 2020 [Anoop Kunjuraman](https://github.com/anoopengineer).<br />
 This project is [MIT](https://github.com/fantasywidgets/wifi-qr-code-generator/blob/master/LICENSE) licensed.
+
+---
+
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
