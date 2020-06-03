@@ -2,7 +2,7 @@
   "name": "wifi-qr-code-generator",
   "version": "1.0.0",
   "description": "NPM module to generate a QR Code for WIFI ssid and password",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc"
