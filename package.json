@@ -1,6 +1,6 @@
 {
   "name": "wifi-qr-code-generator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "NPM module to generate a QR Code for WIFI ssid and password",
   "main": "lib/index.js",
   "scripts": {
