@@ -20,6 +20,9 @@ import Button from '@material-ui/core/Button'
 import FormGroup from '@material-ui/core/FormGroup'
 import SaveIcon from '@material-ui/icons/Save'
 import PrintIcon from '@material-ui/icons/Print'
+import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf'
+import jsPDF from 'jspdf'
+import html2canvas from 'html2canvas'
 
 import { generateWifiQRCode } from 'wifi-qr-code-generator'
 
@@ -70,8 +73,13 @@ const useStyles = makeStyles((theme: Theme) =>
     button: {
       margin: theme.spacing(1)
     },
-    downloadButtonBar:{
+    downloadButtonBar: {
       marginTop: theme.spacing(3)
+    },
+    pdfOutput: {
+      padding: theme.spacing(3),
+      margin: 0,
+      overflow: 'visible'
     }
   })
 )
@@ -130,6 +138,58 @@ function App() {
       setOutput(out)
     } catch (error) {
       console.log('error', error)
+    }
+  }
+
+  const savePDF = async () => {
+    try {
+      const input = document.getElementById('pdf-output')
+      const canvas = await html2canvas(input, { scrollX: 0, scrollY: 0 })
+      const imgData = canvas.toDataURL('image/png')
+      const pdf = new jsPDF('p', 'mm', 'a4')
+      const imgProps = pdf.getImageProperties(imgData)
+      const pdfWidth = pdf.internal.pageSize.getWidth()
+      // const pdfHeight = pdf.internal.pageSize.getHeight()
+      // debugger
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight)
+      pdf.save('test.pdf')
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
+
+  const savePNG = async () => {
+    const input = document.getElementById('pdf-output')
+    const canvas = await html2canvas(input, { scrollX: 0, scrollY: 0 })
+    const imgData = canvas.toDataURL('image/png')
+    saveAs(imgData, `qr-code-${ssid}.png`)
+  }
+
+  const print = () => {
+    var printContents = document.getElementById('pdf-output').innerHTML
+    var originalContents = document.body.innerHTML
+    document.body.innerHTML = printContents
+    window.print()
+    document.body.innerHTML = originalContents
+  }
+
+  function saveAs(uri, filename) {
+    var link = document.createElement('a')
+    if (typeof link.download === 'string') {
+      link.href = uri
+      link.download = filename
+
+      //Firefox requires the link to be in the body
+      document.body.appendChild(link)
+
+      //simulate click
+      link.click()
+
+      //remove the link when done
+      document.body.removeChild(link)
+    } else {
+      window.open(uri)
     }
   }
 
@@ -226,46 +286,57 @@ function App() {
                     justify='center'
                     alignItems='center'
                   >
-                    {displayHeader ? (
-                      <>
-                        <Grid item xs={12}>
-                          <Typography variant='h6' gutterBottom>
-                            {headerText}
-                          </Typography>
-                        </Grid>
-                      </>
-                    ) : (
-                      <></>
-                    )}
-
                     <Grid item xs={12}>
-                      <div>
-                        <img src={output} />
-                      </div>
-                    </Grid>
-                    {displaySSID ? (
-                      <>
-                        <Grid item xs={12}>
-                          <Typography variant='subtitle1'>
-                            WiFi: <strong>{ssid}</strong>
-                          </Typography>
-                        </Grid>
-                      </>
-                    ) : (
-                      <></>
-                    )}
+                      <Grid
+                        container
+                        direction='column'
+                        justify='center'
+                        alignItems='center'
+                        className={classes.pdfOutput}
+                        id='pdf-output'
+                      >
+                        {displayHeader ? (
+                          <>
+                            <Grid item xs={12}>
+                              <Typography variant='h6' gutterBottom>
+                                {headerText}
+                              </Typography>
+                            </Grid>
+                          </>
+                        ) : (
+                          <></>
+                        )}
 
-                    {displayPassword ? (
-                      <>
                         <Grid item xs={12}>
-                          <Typography variant='subtitle1' gutterBottom>
-                            Password: <strong>{password}</strong>
-                          </Typography>
+                          <div>
+                            <img src={output} />
+                          </div>
                         </Grid>
-                      </>
-                    ) : (
-                      <></>
-                    )}
+                        {displaySSID ? (
+                          <>
+                            <Grid item xs={12}>
+                              <Typography variant='subtitle1'>
+                                WiFi: <strong>{ssid}</strong>
+                              </Typography>
+                            </Grid>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+
+                        {displayPassword ? (
+                          <>
+                            <Grid item xs={12}>
+                              <Typography variant='subtitle1' gutterBottom>
+                                Password: <strong>{password}</strong>
+                              </Typography>
+                            </Grid>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </Grid>
+                    </Grid>
 
                     {downloadOptions ? (
                       <></>
@@ -357,6 +428,7 @@ function App() {
                             <Button
                               variant='contained'
                               color='primary'
+                              onClick={savePNG}
                               className={classes.button}
                               startIcon={<SaveIcon />}
                             >
@@ -366,15 +438,17 @@ function App() {
                             <Button
                               variant='contained'
                               color='primary'
+                              onClick={savePDF}
                               className={classes.button}
-                              startIcon={<SaveIcon />}
+                              startIcon={<PictureAsPdfIcon />}
                             >
-                              Download SVG
+                              Download PDF
                             </Button>
 
                             <Button
                               variant='contained'
                               color='primary'
+                              onClick={print}
                               className={classes.button}
                               startIcon={<PrintIcon />}
                             >
