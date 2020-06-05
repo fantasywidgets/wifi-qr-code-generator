@@ -32,18 +32,9 @@ jobs:
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN_2df54}}
-
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - run: cd demo && yarn install --frozen-lockfile && yarn build && cd -
+      - name: Deploy Demo Site
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com/
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.pat_github}}
+          github_token: ${{ secrets.pat_github }}
+          publish_dir: ./demo/build
