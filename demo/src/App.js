@@ -1,11 +1,7 @@
 import React from 'react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
-import InputLabel from '@material-ui/core/InputLabel'
-import MenuItem from '@material-ui/core/MenuItem'
-import FormHelperText from '@material-ui/core/FormHelperText'
 import FormControl from '@material-ui/core/FormControl'
-import Select from '@material-ui/core/Select'
 import Grid from '@material-ui/core/Grid'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Switch from '@material-ui/core/Switch'
@@ -364,7 +360,7 @@ function App() {
                               <div>
                                 <img
                                   src={output}
-                                  alt='qr-code-image'
+                                  alt='qr-code'
                                   id='qr-code-image'
                                 />
                               </div>
