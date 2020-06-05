@@ -27,3 +27,5 @@ jobs:
       - run: yarn test
       - run: yarn build
       - run: yarn --cwd demo/ deploy
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.pat_github}}
