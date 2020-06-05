@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dfe89441850f33405f749548f5f1cfa5",
+    "revision": "6e556ba36678af60b607fd9519bac0b5",
     "url": "/wifi-qr-code-generator/index.html"
   },
   {
-    "revision": "c3657700da323b0f714b",
+    "revision": "7833763564d66bac5564",
     "url": "/wifi-qr-code-generator/static/css/main.5ecd60fb.chunk.css"
   },
   {
-    "revision": "2d042b56956d03e7b4bb",
-    "url": "/wifi-qr-code-generator/static/js/2.d5b3e7f5.chunk.js"
+    "revision": "94f64b00078455efc7a2",
+    "url": "/wifi-qr-code-generator/static/js/2.a4b04835.chunk.js"
   },
   {
     "revision": "2671755c56578721a6e26bb7a786e558",
-    "url": "/wifi-qr-code-generator/static/js/2.d5b3e7f5.chunk.js.LICENSE.txt"
+    "url": "/wifi-qr-code-generator/static/js/2.a4b04835.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c3657700da323b0f714b",
-    "url": "/wifi-qr-code-generator/static/js/main.4d63f911.chunk.js"
+    "revision": "7833763564d66bac5564",
+    "url": "/wifi-qr-code-generator/static/js/main.ab05485e.chunk.js"
   },
   {
     "revision": "b517d6701bc957de77f9",

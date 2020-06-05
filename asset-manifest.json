@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/wifi-qr-code-generator/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/wifi-qr-code-generator/static/js/main.4d63f911.chunk.js",
-    "main.js.map": "/wifi-qr-code-generator/static/js/main.4d63f911.chunk.js.map",
+    "main.js": "/wifi-qr-code-generator/static/js/main.ab05485e.chunk.js",
+    "main.js.map": "/wifi-qr-code-generator/static/js/main.ab05485e.chunk.js.map",
     "runtime-main.js": "/wifi-qr-code-generator/static/js/runtime-main.a667ba9f.js",
     "runtime-main.js.map": "/wifi-qr-code-generator/static/js/runtime-main.a667ba9f.js.map",
-    "static/js/2.d5b3e7f5.chunk.js": "/wifi-qr-code-generator/static/js/2.d5b3e7f5.chunk.js",
-    "static/js/2.d5b3e7f5.chunk.js.map": "/wifi-qr-code-generator/static/js/2.d5b3e7f5.chunk.js.map",
+    "static/js/2.a4b04835.chunk.js": "/wifi-qr-code-generator/static/js/2.a4b04835.chunk.js",
+    "static/js/2.a4b04835.chunk.js.map": "/wifi-qr-code-generator/static/js/2.a4b04835.chunk.js.map",
     "index.html": "/wifi-qr-code-generator/index.html",
-    "precache-manifest.6145dec92d696c0159d85f6fc320513a.js": "/wifi-qr-code-generator/precache-manifest.6145dec92d696c0159d85f6fc320513a.js",
+    "precache-manifest.f8ed9d00d748f5482794c33807b35126.js": "/wifi-qr-code-generator/precache-manifest.f8ed9d00d748f5482794c33807b35126.js",
     "service-worker.js": "/wifi-qr-code-generator/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/wifi-qr-code-generator/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.d5b3e7f5.chunk.js.LICENSE.txt": "/wifi-qr-code-generator/static/js/2.d5b3e7f5.chunk.js.LICENSE.txt"
+    "static/js/2.a4b04835.chunk.js.LICENSE.txt": "/wifi-qr-code-generator/static/js/2.a4b04835.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a667ba9f.js",
-    "static/js/2.d5b3e7f5.chunk.js",
+    "static/js/2.a4b04835.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.4d63f911.chunk.js"
+    "static/js/main.ab05485e.chunk.js"
   ]
 }
