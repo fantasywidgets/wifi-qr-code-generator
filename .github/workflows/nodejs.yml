@@ -26,6 +26,9 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn test
       - run: yarn build
-      - run: cd demo && yarn install --frozen-lockfile && yarn deploy && cd -
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.pat_github}}
+      - run: cd demo && yarn install --frozen-lockfile && yarn build && cd -
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+          with:
+            github_token: ${{ secrets.pat_github }}
+            publish_dir: ./demo/build
