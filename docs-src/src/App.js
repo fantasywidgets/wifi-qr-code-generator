@@ -29,21 +29,29 @@ import { generateWifiQRCode } from 'wifi-qr-code-generator'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      marginTop: theme.spacing(10),
+      margin: theme.spacing(10),
+      width: '100%',
       flexGrow: 1
     },
 
     inputSide: {
-      marginLeft: theme.spacing(5),
-
-      maxWidth: 500,
+      // background: '#ffff00',
+      // marginLeft: theme.spacing(5),
+      // margin: 'auto',
+      // maxWidth: 500,
       minWidth: 500,
-      width: 500
+      // width: '100%',
+      padding: theme.spacing(5)
     },
     outputSide: {
-      marginLeft: theme.spacing(5),
-      maxWidth: 500,
+      // background: '#ffff00',
+      // marginLeft: theme.spacing(5),
+      // margin: 0,
+
+      // margin: 'auto',
+      // maxWidth: 500,
       minWidth: 500,
+      // width: '100%'
       padding: theme.spacing(5)
     },
     formRoot: {
@@ -61,7 +69,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // minWidth: 120,
     },
     downloadOptions: {
-      marginTop: theme.spacing(3),
+      marginTop: theme.spacing(7),
       width: '100%'
     },
     downloadOptionsPane: {
@@ -78,8 +86,12 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     pdfOutput: {
       padding: theme.spacing(3),
+      textAlign: 'center',
       margin: 0,
-      overflow: 'visible'
+      minWidth: 530,
+      maxWidth: 530
+      // width: '100%'
+      // overflow: 'visible'
     }
   })
 )
@@ -144,7 +156,9 @@ function App() {
   const savePDF = async () => {
     try {
       const input = document.getElementById('pdf-output')
-      const canvas = await html2canvas(input, { scrollX: 0, scrollY: 0 })
+      const canvas = await html2canvas(input, {
+        scrollY: -window.scrollY
+      })
       const imgData = canvas.toDataURL('image/png')
       const pdf = new jsPDF('p', 'mm', 'a4')
       const imgProps = pdf.getImageProperties(imgData)
@@ -153,7 +167,7 @@ function App() {
       // debugger
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight)
-      pdf.save('test.pdf')
+      pdf.save(`qr-code-${ssid}.pdf`)
     } catch (error) {
       console.log('error', error)
     }
@@ -161,9 +175,14 @@ function App() {
 
   const savePNG = async () => {
     const input = document.getElementById('pdf-output')
-    const canvas = await html2canvas(input, { scrollX: 0, scrollY: 0 })
+    const canvas = await html2canvas(input, {
+      scrollY: -window.scrollY
+    })
     const imgData = canvas.toDataURL('image/png')
     saveAs(imgData, `qr-code-${ssid}.png`)
+    // html2canvas(document.getElementById('pdf-output'), ).then(function (canvas) {
+    //   document.body.appendChild(canvas)
+    // })
   }
 
   const print = () => {
@@ -195,153 +214,193 @@ function App() {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item className={classes.inputSide}>
-          <form className={classes.formRoot} noValidate autoComplete='off'>
-            <Grid
-              container
-              direction='column'
-              justify='center'
-              alignItems='flex-start'
-            >
-              <Grid item xs={12}>
-                <Grid container justify='center' alignItems='flex-start'>
-                  <Grid item xs={9}>
-                    <TextField
-                      className={classes.formControl}
-                      id='ssid'
-                      label='WiFi Name (SSID)'
-                      value={ssid}
-                      onChange={handleSSIDChange}
-                    />
-                  </Grid>
-                  <Grid item xs={3}>
-                    <Tooltip title='Is this a hidden WiFi network?' arrow>
-                      <FormControlLabel
+      <Grid
+        container
+        direction='column'
+        justify='flex-start'
+        alignItems='center'
+        spacing={3}
+      >
+        <Grid item xs>
+          <Grid
+            container
+            direction='column'
+            justify='flex-start'
+            alignItems='center'
+            spacing={0}
+          >
+            <Grid item xs>
+              <Typography variant='h3' gutterBottom>
+                WiFi QR Code Login Generator
+              </Typography>
+            </Grid>
+            <Grid item xs>
+              <Typography variant='caption' display='block' gutterBottom>
+                A free utility to help you print a WiFi login card. Point your
+                phone's camera at the QR Code to connect automatically.
+              </Typography>
+            </Grid>
+            <Grid item xs>
+              <Typography variant='caption' display='block' gutterBottom>
+                Your WiFi information is never sent to the server.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs>
+          <Paper elevation={1} className={classes.inputSide}>
+            <form className={classes.formRoot} noValidate autoComplete='off'>
+              <Grid
+                container
+                direction='column'
+                justify='center'
+                alignItems='flex-start'
+              >
+                <Grid item xs={12}>
+                  <Grid container justify='center' alignItems='flex-start'>
+                    <Grid item xs={9}>
+                      <TextField
                         className={classes.formControl}
-                        control={
-                          <Checkbox
-                            className={classes.formControl}
-                            checked={hiddenSSID}
-                            onChange={handleHiddenSSIDChange}
-                            name='hidden'
-                            color='primary'
-                          />
-                        }
-                        label='Hidden?'
+                        id='ssid'
+                        label='WiFi Name (SSID)'
+                        value={ssid}
+                        onChange={handleSSIDChange}
                       />
-                    </Tooltip>
+                    </Grid>
+                    <Grid item xs={3}>
+                      <Tooltip title='Is this a hidden WiFi network?' arrow>
+                        <FormControlLabel
+                          className={classes.formControl}
+                          control={
+                            <Checkbox
+                              className={classes.formControl}
+                              checked={hiddenSSID}
+                              onChange={handleHiddenSSIDChange}
+                              name='hidden'
+                              color='primary'
+                            />
+                          }
+                          label='Hidden?'
+                        />
+                      </Tooltip>
+                    </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
-              <Grid item xs={12} className={classes.passwordRow}>
-                <TextField
-                  // className={classes.formControl}
-                  id='password'
-                  label='Password'
-                  value={password}
-                  onChange={handlePasswordChange}
-                />
-              </Grid>
+                <Grid item xs={12} className={classes.passwordRow}>
+                  <TextField
+                    // className={classes.formControl}
+                    id='password'
+                    label='Password'
+                    value={password}
+                    onChange={handlePasswordChange}
+                  />
+                </Grid>
 
-              <Grid item xs={12} className={classes.encryptionRow}>
-                <FormControl component='fieldset'>
-                  <FormLabel component='legend'>Encryption</FormLabel>
-                  <RadioGroup
-                    row
-                    aria-label='encryption'
-                    name='encryption'
-                    value={encryption}
-                    onChange={handleEncryptionChange}
-                  >
-                    <FormControlLabel
-                      value='WPA'
-                      control={<Radio />}
-                      label='WPA / WPA2'
-                    />
-                    <FormControlLabel
-                      value='WEP'
-                      control={<Radio />}
-                      label='WEP'
-                    />
-                    <FormControlLabel
-                      value='None'
-                      control={<Radio />}
-                      label='None'
-                    />
-                  </RadioGroup>
-                </FormControl>
+                <Grid item xs={12} className={classes.encryptionRow}>
+                  <FormControl component='fieldset'>
+                    <FormLabel component='legend'>Encryption</FormLabel>
+                    <RadioGroup
+                      row
+                      aria-label='encryption'
+                      name='encryption'
+                      value={encryption}
+                      onChange={handleEncryptionChange}
+                    >
+                      <FormControlLabel
+                        value='WPA'
+                        control={<Radio />}
+                        label='WPA / WPA2'
+                      />
+                      <FormControlLabel
+                        value='WEP'
+                        control={<Radio />}
+                        label='WEP'
+                      />
+                      <FormControlLabel
+                        value='None'
+                        control={<Radio />}
+                        label='None'
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
+            </form>
+          </Paper>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs>
           <>
             {output && ssid ? (
               <>
-                <Paper className={classes.outputSide}>
+                <Paper elevation={0} className={classes.outputSide}>
                   <Grid
                     container
                     direction='column'
                     justify='center'
                     alignItems='center'
                   >
-                    <Grid item xs={12}>
+                    <Grid item>
                       <Grid
                         container
                         direction='column'
                         justify='center'
                         alignItems='center'
-                        className={classes.pdfOutput}
-                        id='pdf-output'
                       >
-                        {displayHeader ? (
-                          <>
-                            <Grid item xs={12}>
-                              <Typography variant='h6' gutterBottom>
-                                {headerText}
-                              </Typography>
-                            </Grid>
-                          </>
-                        ) : (
-                          <></>
-                        )}
+                        <Paper elevation={3} className={classes.pdfOutput}>
+                          <div id='pdf-output'>
+                            {displayHeader ? (
+                              <>
+                                <Grid item xs={12}>
+                                  <Typography variant='h6' gutterBottom>
+                                    {headerText}
+                                  </Typography>
+                                </Grid>
+                              </>
+                            ) : (
+                              <></>
+                            )}
 
-                        <Grid item xs={12}>
-                          <div>
-                            <img src={output} />
+                            <Grid item xs={12}>
+                              <div>
+                                <img
+                                  src={output}
+                                  alt='qr-code-image'
+                                  id='qr-code-image'
+                                />
+                              </div>
+                            </Grid>
+                            {displaySSID ? (
+                              <>
+                                <Grid item xs={12}>
+                                  <Typography variant='subtitle1'>
+                                    WiFi: <strong>{ssid}</strong>
+                                  </Typography>
+                                </Grid>
+                              </>
+                            ) : (
+                              <></>
+                            )}
+
+                            {displayPassword ? (
+                              <>
+                                <Grid item xs={12}>
+                                  <Typography variant='subtitle1' gutterBottom>
+                                    Password: <strong>{password}</strong>
+                                  </Typography>
+                                </Grid>
+                              </>
+                            ) : (
+                              <></>
+                            )}
                           </div>
-                        </Grid>
-                        {displaySSID ? (
-                          <>
-                            <Grid item xs={12}>
-                              <Typography variant='subtitle1'>
-                                WiFi: <strong>{ssid}</strong>
-                              </Typography>
-                            </Grid>
-                          </>
-                        ) : (
-                          <></>
-                        )}
-
-                        {displayPassword ? (
-                          <>
-                            <Grid item xs={12}>
-                              <Typography variant='subtitle1' gutterBottom>
-                                Password: <strong>{password}</strong>
-                              </Typography>
-                            </Grid>
-                          </>
-                        ) : (
-                          <></>
-                        )}
+                        </Paper>
                       </Grid>
                     </Grid>
 
                     {downloadOptions ? (
                       <></>
                     ) : (
-                      <Grid item xs={12}>
+                      <Grid item>
                         <Button
                           variant='contained'
                           color='primary'
