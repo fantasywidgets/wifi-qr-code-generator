@@ -29,6 +29,6 @@ jobs:
       - run: cd demo && yarn install --frozen-lockfile && yarn build && cd -
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-          with:
-            github_token: ${{ secrets.pat_github }}
-            publish_dir: ./demo/build
+        with:
+          github_token: ${{ secrets.pat_github }}
+          publish_dir: ./demo/build
