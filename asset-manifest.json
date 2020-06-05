@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/wifi-qr-code-generator/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/wifi-qr-code-generator/static/js/main.cd77b9b6.chunk.js",
-    "main.js.map": "/wifi-qr-code-generator/static/js/main.cd77b9b6.chunk.js.map",
+    "main.js": "/wifi-qr-code-generator/static/js/main.40fc17cf.chunk.js",
+    "main.js.map": "/wifi-qr-code-generator/static/js/main.40fc17cf.chunk.js.map",
     "runtime-main.js": "/wifi-qr-code-generator/static/js/runtime-main.a667ba9f.js",
     "runtime-main.js.map": "/wifi-qr-code-generator/static/js/runtime-main.a667ba9f.js.map",
     "static/js/2.8af8b9b3.chunk.js": "/wifi-qr-code-generator/static/js/2.8af8b9b3.chunk.js",
     "static/js/2.8af8b9b3.chunk.js.map": "/wifi-qr-code-generator/static/js/2.8af8b9b3.chunk.js.map",
     "index.html": "/wifi-qr-code-generator/index.html",
-    "precache-manifest.6dab7985540c0d1aad9d9bb7efdb6537.js": "/wifi-qr-code-generator/precache-manifest.6dab7985540c0d1aad9d9bb7efdb6537.js",
+    "precache-manifest.b6eb193149e71416ac25408f49a31b91.js": "/wifi-qr-code-generator/precache-manifest.b6eb193149e71416ac25408f49a31b91.js",
     "service-worker.js": "/wifi-qr-code-generator/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/wifi-qr-code-generator/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.8af8b9b3.chunk.js.LICENSE.txt": "/wifi-qr-code-generator/static/js/2.8af8b9b3.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.a667ba9f.js",
     "static/js/2.8af8b9b3.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.cd77b9b6.chunk.js"
+    "static/js/main.40fc17cf.chunk.js"
   ]
 }
