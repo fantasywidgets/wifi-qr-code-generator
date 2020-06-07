@@ -16,7 +16,6 @@ export async function generateWifiQRCode(input: Config) {
   const wifiString: string = generateString(input)
   try {
     if (input.outputFormat.type === 'image/png') {
-      console.log('Calling toDataURL', input.outputFormat.type)
       const retVal: string = await qrcode.toDataURL(
         wifiString,
         input.outputFormat
