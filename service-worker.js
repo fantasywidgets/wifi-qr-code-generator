@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/wifi-qr-code-generator/precache-manifest.715dfd58376df75a4d25ade72735000a.js"
+  "/wifi-qr-code-generator/precache-manifest.0a247419a6d18bb46474ff418b7ce376.js"
 );
 
 self.addEventListener('message', (event) => {
