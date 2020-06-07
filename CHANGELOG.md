@@ -1,5 +1,13 @@
 # Changelog
 
+### [1.1.1](https://www.github.com/fantasywidgets/wifi-qr-code-generator/compare/v1.1.0...v1.1.1) (2020-06-07)
+
+
+### Bug Fixes
+
+* Fixed the demo page ([b9b0596](https://www.github.com/fantasywidgets/wifi-qr-code-generator/commit/b9b05960f31653af708d08689cb8785fa7a9cfaf))
+* removed unwanted debug logs ([ffca5b0](https://www.github.com/fantasywidgets/wifi-qr-code-generator/commit/ffca5b0b5fdd2dc4488c88c19688d824b0a74889))
+
 ## [1.1.0](https://www.github.com/fantasywidgets/wifi-qr-code-generator/compare/v1.0.2...v1.1.0) (2020-06-05)
 
 
